@@ -1,0 +1,21 @@
+
+#global {
+ width:800px; height:500px;
+ margin: 0 auto 0 auto;
+ ;
+}
+#cabecera {
+ width:800px;
+ height:60px;
+ margin: 0 auto 0 auto;
+ background-color:#A9F5E1;
+ color: #FDFEFE;
+
+}
+#formulario {
+ width:800px;
+ height:400px;
+ margin: 0 auto 0 auto;
+ background-color:#A9F5F2;
+  color: #FDFEFE;
+}
