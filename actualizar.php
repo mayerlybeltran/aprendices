@@ -54,15 +54,10 @@
 	  
 
 
-		
-
-$sql="DELETE from aprendices where nombres= ?";
-$resultado=$base->prepare($sql);
-$resultado->execute(array($nombre));
- 
-  /* $sql= "INSERT INTO aprendices (documento,nombres,apellidos) VALUES (:docu,:nomb,:apell)";
+		$sql="UPDATE aprendices SET nombres=?,apellidos=? WHERE documento=?";
 		  $datos=$base->prepare($sql);
-        $datos->execute(array(':docu'=>$documento,':nomb'=> $nombres,':apell'=> $apellidos)); */
+       $datos->execute(array($_POST['nombres'],$_POST['apellidos'],$_POST['documento']));
+
 
  $sql="SELECT * FROM aprendices";
        $datos=$base->prepare($sql);

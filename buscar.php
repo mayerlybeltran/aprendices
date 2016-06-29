@@ -37,11 +37,9 @@
 		</form>
 		</center>
  </div>
- <?php
-     $nombre=$_GET['eliminar'];
- $nombres=$_POST['nombres'];
- $apellidos=$_POST['apellidos'];
- $documento=$_POST['documento'];
+<?php 
+$busqueda= $_GET['buscar'];
+
 	try{
 
 			$base=new PDO('mysql:host=sql5.freemysqlhosting.net; dbname=sql5124996', 'sql5124996','c2d2UyxQzL');
@@ -52,25 +50,11 @@
 			die ('Error:' . $e->GetMessage());
 		}
 	  
-
-
-		
-
-$sql="DELETE from aprendices where nombres= ?";
+    
+$sql="SELECT nombres,apellidos,documento from aprendices WHERE nombres= ?";
 $resultado=$base->prepare($sql);
-$resultado->execute(array($nombre));
- 
-  /* $sql= "INSERT INTO aprendices (documento,nombres,apellidos) VALUES (:docu,:nomb,:apell)";
-		  $datos=$base->prepare($sql);
-        $datos->execute(array(':docu'=>$documento,':nomb'=> $nombres,':apell'=> $apellidos)); */
-
- $sql="SELECT * FROM aprendices";
-       $datos=$base->prepare($sql);
-       $datos->execute();
-
-
-
-while ($registros=$datos->fetch(PDO::FETCH_ASSOC)) {
+$resultado->execute(array($busqueda));
+while ($registros=$resultado->fetch(PDO::FETCH_ASSOC)) {
 	
 echo "<center>";
 	echo "Documento: ".$registros['documento']. "<br>";
@@ -78,9 +62,11 @@ echo "<center>";
 	echo "Apellido: ".$registros['apellidos'];"<br>";
 	echo "<hr>";
 }
-	$datos->closeCursor();
+	$resultado->closeCursor();
 ?>
 </div>
+</center>
 
+ 
 </body>
 </html>
